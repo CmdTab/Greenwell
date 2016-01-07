@@ -1,0 +1,59 @@
+/*!
+	Theme Name: Greenwell Homes
+	Theme URI: http://cmdtab.co
+	Author: Josh Rives
+	Author URI: http://cmdtab.co
+*/
+@import "normalize";
+@import "bits";
+@import "var";
+
+html,body {
+	overflow-x:hidden;
+	-webkit-font-smoothing: antialiased;
+}
+html {
+	background: $light-mustard;
+}
+body {
+	background: #fff;
+	color: $text;
+	font:
+		0.875em/1.8
+		"proxima-nova", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	@include bp(44) {
+		font-size: 1em;
+	}
+}
+
+a {
+	color: $black;
+	&:hover {
+		color: darken($black, 10%);
+		text-decoration: none;
+	}
+}
+.btn {
+	@include button($black, $black);
+}
+
+h1,h2,h3,h4,h5,h6 {
+	line-height: 1;
+	margin-top: 0;
+}
+h1 {
+	font-size: 4em;
+}
+h2 {
+	font-size: 3em;
+}
+
+@import "icons";
+@import "modules";
+@import "header";
+@import "home";
+@import "carousel";
+@import "footer";
+@import "page";
+@import "forms";
+@import "grid";

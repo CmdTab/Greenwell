@@ -1,0 +1,22 @@
+.home-banner {
+	text-align: center;
+	font-size: 1.2em;
+	margin-bottom: 2em;
+	img {
+		display: block;
+		margin: 0 auto 1em;
+		width: 45em;
+	}
+	p {
+		max-width: 37.5em;
+		margin: 1em auto;
+	}
+}
+.home-gallery {
+	margin-bottom: 2em;
+	h2 {
+		text-align: center;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
+}

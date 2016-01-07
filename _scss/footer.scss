@@ -1,0 +1,41 @@
+.site-footer {
+	background: $light-mustard;
+	padding: 1em 0;
+	font-weight: 300;
+	text-align: center;
+	a {
+		text-decoration: none;
+		&:hover {
+			color: lighten($text, 15%);
+		}
+	}
+	@include bp(44) {
+		text-align: left;
+	}
+}
+.footer-nav {
+	ul {
+		list-style: none;
+		margin: 1em 0 0;
+		padding: 0;
+		li {
+			display: inline-block;
+			&:after {
+				content: '|';
+				margin: 0 0.75em;
+				color: $text;
+			}
+			&:last-child {
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+	@include bp(44) {
+		float: right;
+		ul {
+			margin: 0;
+		}
+	}
+}

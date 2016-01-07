@@ -1,0 +1,288 @@
+.carousel {
+	position: relative;
+}
+.carousel-inner {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	padding-bottom: 61.73%;
+}
+.carousel-inner > .item {
+	display: none;
+	position: relative;
+	transition: 0.6s ease-in-out left;
+	padding: 0 0.5em 0 0;
+	img {
+		width: auto;
+		max-height: 221px;
+		margin: 0 auto;
+		@include bp(44) {
+			max-height: 422px;
+		}
+		@include bp(50) {
+			max-height: 661px;
+		}
+	}
+	a {
+		display: block;
+		span {
+			font-size: 0.75em;
+			position: absolute;
+			right: 0;
+			bottom: 1em;
+			display: block;
+			padding: 0.5em 2em;
+			background: $dark-mustard;
+			color: #f5fbd0;
+			font-weight: 600;
+			box-shadow: -0.5em 0.25em 0.15em transparentize($black, 0.7);
+			&:after {
+				content: '';
+				position: absolute;
+				top: 100%;
+				right: 0;
+				display: block;
+				height: 0;
+				width: 0;
+				border-top: 0.75em solid darken($dark-mustard, 10%); 
+				border-right: 0.75em solid transparent;
+			}
+			@include bp(44) {
+				font-size: 1em;
+				&:after {
+					border-top: 0.5em solid darken($dark-mustard, 10%); 
+					border-right: 0.5em solid transparent;
+				}
+			}
+		}
+		&:hover {
+			span {
+				background: darken($dark-mustard, 10%);
+				&:after {
+					border-top: 0.5em solid darken($dark-mustard, 20%);
+				}
+			}
+		}
+		
+	}
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+	line-height: 1;
+	display: block;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+	.carousel-inner > .item {
+		transition: transform 0.6s ease-in-out;
+		backface-visibility: hidden;
+		perspective: 1000;
+	}
+	.carousel-inner > .item.next,
+	.carousel-inner > .item.active.right {
+		transform: translate3d(100%, 0, 0);
+		left: 0;
+	}
+	.carousel-inner > .item.prev,
+	.carousel-inner > .item.active.left {
+		transform: translate3d(-100%, 0, 0);
+		left: 0;
+	}
+	.carousel-inner > .item.next.left,
+	.carousel-inner > .item.prev.right,
+	.carousel-inner > .item.active {
+		transform: translate3d(0, 0, 0);
+		left: 0;
+	}
+}
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+	display: block;
+}
+.carousel-inner > .active {
+	left: 0;
+}
+.carousel-inner > .next,
+.carousel-inner > .prev {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.carousel-inner > .next {
+	left: 100%;
+}
+.carousel-inner > .prev {
+	left: -100%;
+}
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+	left: 0;
+}
+.carousel-inner > .active.left {
+	left: -100%;
+}
+.carousel-inner > .active.right {
+	left: 100%;
+}
+.carousel-control {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	bottom: 25%;
+	width: 10%;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	text-align: center;
+	line-height: 1;
+	svg {
+		position: absolute;
+		top: 50%;
+		margin-top: -0.5em;
+		font-size: 3em;
+		fill: #333;
+		@include bp(44) {
+			font-size: 6em;
+		}
+	}
+}
+.carousel-control.left {
+	/*background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);*/
+	svg {
+		left: 0;
+	}
+}
+.carousel-control.right {
+	left: auto;
+	right: 0.5em;
+	svg {
+		right: 0;
+	}
+	/*background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+	background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);*/
+}
+.carousel-control:hover,
+.carousel-control:focus {
+	outline: 0;
+	color: #ffffff;
+	text-decoration: none;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+	position: absolute;
+	top: 50%;
+	z-index: 5;
+	display: inline-block;
+}
+.carousel-control .icon-prev,
+.carousel-control .glyphicon-chevron-left {
+	left: 50%;
+	margin-left: -10px;
+}
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-right {
+	right: 50%;
+	margin-right: -10px;
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+	line-height: 1;
+	font-family: serif;
+}
+.carousel-control .icon-prev:before {
+	content: '\2039';
+}
+.carousel-control .icon-next:before {
+	content: '\203a';
+}
+.carousel-indicators {
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	z-index: 15;
+	width: 60%;
+	margin-left: -30%;
+	padding-left: 0;
+	list-style: none;
+	text-align: center;
+	@include bp(44) {
+		//display: block;
+	}
+}
+.carousel-indicators li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 1px;
+	text-indent: -999px;
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: #000 \9;
+	background-color: rgba(0, 0, 0, 0);
+}
+.carousel-indicators .active {
+	margin: 0;
+	width: 12px;
+	height: 12px;
+	background-color: #fff;
+}
+.carousel-caption {
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	bottom: 20px;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.carousel-caption .btn {
+	text-shadow: none;
+}
+@media screen and (min-width: 768px) {
+	.carousel-control .glyphicon-chevron-left,
+	.carousel-control .glyphicon-chevron-right,
+	.carousel-control .icon-prev,
+	.carousel-control .icon-next {
+		width: 30px;
+		height: 30px;
+		margin-top: -15px;
+		font-size: 30px;
+	}
+	.carousel-control .glyphicon-chevron-left,
+	.carousel-control .icon-prev {
+		margin-left: -15px;
+	}
+	.carousel-control .glyphicon-chevron-right,
+	.carousel-control .icon-next {
+		margin-right: -15px;
+	}
+	.carousel-caption {
+		left: 20%;
+		right: 20%;
+		padding-bottom: 30px;
+	}
+	.carousel-indicators {
+		bottom: 20px;
+	}
+}
