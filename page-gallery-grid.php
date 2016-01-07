@@ -14,26 +14,32 @@ get_header(); ?>
 
 	<div class="full-section">
 		<div class="wrap">
-			<ul class="gallery-grid three-list group">
-				<li>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>/gallery/exterior">
-						<img src="<?php bloginfo('template_directory'); ?>/_i/exterior.jpg" />
-						<h2>Exterior</h2>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>/gallery/interior-details">
-						<img src="<?php bloginfo('template_directory'); ?>/_i/interior.jpg" />
-						<h2>Interior &amp; Details</h2>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>/gallery/kitchens-bathrooms">
-						<img src="<?php bloginfo('template_directory'); ?>/_i/bathroom.jpg" />
-						<h2>Kitchens &amp; Bathrooms</h2>
-					</a>
-				</li>
-			</ul><!--gallery-grid-->
+			<?php if( have_rows('grid') ): ?>
+
+				<ul class="gallery-grid three-list group">
+
+				<?php while( have_rows('grid') ): the_row(); 
+
+					// vars
+					$name = get_sub_field('gallery_name');
+					$picture = get_sub_field('gallery_picture');
+					$link = get_sub_field('gallery_link');
+
+					?>
+
+					<li>
+						<a href="<?php echo $link; ?>">
+							<img src="<?php echo $picture['url']; ?>" alt="..." />
+							<h2><?php echo $name; ?></h2>
+						</a>
+					</li>
+
+				<?php endwhile; ?>
+
+				</ul>
+
+			<?php endif; ?>
+			
 		</div><!--wrap-->
 	</div><!-- #primary -->
 
