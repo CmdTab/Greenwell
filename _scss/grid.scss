@@ -61,7 +61,10 @@
 .individual-content {
 	max-width: 44em;
 	margin: 0 auto;
-	padding: 0 0 3em;
+	padding: 0 0 1em;
+	@include bp(44) {
+		padding-bottom: 3em;
+	}
 	h2 {
 		margin-bottom: 0;
 		font-size: 1.5em;
@@ -108,6 +111,7 @@
 	}
 	&.mobile {
 		display: block;
+		margin: 0 auto 3em;
 		@include bp(44) {
 			display: none;
 		}
