@@ -56,7 +56,12 @@
 .individual-header {
 	max-width: 44em;
 	margin: 0 auto;
-	padding: 0 0 2em;
+	padding: 0;
+}
+.individual-content {
+	max-width: 44em;
+	margin: 0 auto;
+	padding: 0 0 3em;
 	h2 {
 		margin-bottom: 0;
 		font-size: 1.5em;
@@ -71,8 +76,10 @@
 	text-align: center;
 	border-top: 2px solid $dark-mustard;
 	border-bottom: 2px solid $dark-mustard;
+	display: none;
 	@include bp(44) {
 		margin: 0 auto 3em;
+		display: block;
 	}
 	ul {
 		list-style: none;

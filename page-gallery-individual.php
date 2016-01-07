@@ -30,14 +30,6 @@ get_header(); ?>
 
 					?>
 				</div>
-				<h2><?php the_title(); ?></h2>
-				<p>
-					<?php while ( have_posts() ) : the_post(); ?>
-
-						<?php the_content(); ?>
-
-					<?php endwhile; // end of the loop. ?>
-				</p>
 			</div>
 			<?php if( have_rows('new_gallery_item') ): ?>
 			<div class="home-gallery">
@@ -81,6 +73,16 @@ get_header(); ?>
 				</div><!--carousel-->
 			</div><!--home-gallery-->
 			<?php endif; ?>
+			<div class="individual-content">
+				<h2><?php the_title(); ?></h2>
+				<p>
+					<?php while ( have_posts() ) : the_post(); ?>
+
+						<?php the_content(); ?>
+
+					<?php endwhile; // end of the loop. ?>
+				</p>
+			</div>
 			<div class="gallery-navigation mobile">
 				<?php
 				$defaults = array(
