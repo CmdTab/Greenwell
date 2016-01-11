@@ -61,9 +61,15 @@
 .individual-content {
 	max-width: 44em;
 	margin: 0 auto;
-	padding: 0 0 1em;
+	padding: 1em 0;
+	@include bp(30) {
+		margin: -3.5em auto 0;
+	}
 	@include bp(44) {
 		padding-bottom: 3em;
+	}
+	@include bp(50) {
+		margin: 0 auto;
 	}
 	h2 {
 		margin-bottom: 0;

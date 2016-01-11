@@ -34,17 +34,11 @@ get_header(); ?>
 			<?php if( have_rows('new_gallery_item') ): ?>
 			<div class="home-gallery">
 				<div id="carousel-home" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<?php $i = 0; while ( have_rows('new_gallery_item') ) : the_row(); ?>
-						<li data-target="#carousel-home" data-slide-to="<?php echo $i; ?>" <?php if($i == 0) { echo "class='active'";} ?>></li>
-						<?php $i++; endwhile; ?>
-					</ol>
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<?php $j = 0; while ( have_rows('new_gallery_item') ) : the_row(); ?>
-						<div class="item<?php if($j == 0) { echo " active";} ?>">
+						<div class="item<?php if($j == 0) { echo " active";} ?>" data-slide-number="<?php echo $j; ?>">
 							<?php if(get_sub_field('gallery_link')): ?>
 								<a href = "<?php the_sub_field('gallery_link'); ?>">
 							<?php endif; ?>
@@ -59,17 +53,54 @@ get_header(); ?>
 							<?php endif; ?>
 						</div>
 						<?php $j++; endwhile; ?>
+						<!-- Controls -->
+						<a class="left carousel-control" href="#carousel-home" role="button" data-slide="prev">
+							<svg class="icon icon-angle-left"><use xlink:href="#icon-angle-left"></use></svg>
+							<span class="assistive-text">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#carousel-home" role="button" data-slide="next">
+							<svg class="icon icon-angle-right"><use xlink:href="#icon-angle-right"></use></svg>
+							<span class="assistive-text">Next</span>
+						</a>
 					</div>
 
-					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-home" role="button" data-slide="prev">
-						<svg class="icon icon-angle-left"><use xlink:href="#icon-angle-left"></use></svg>
-						<span class="assistive-text">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#carousel-home" role="button" data-slide="next">
-						<svg class="icon icon-angle-right"><use xlink:href="#icon-angle-right"></use></svg>
-						<span class="assistive-text">Next</span>
-					</a>
+					<!-- Indicators -->
+					
+					<!-- <ol class="carousel-indicators">
+						<?php // $i = 0; while ( have_rows('new_gallery_item') ) : the_row(); ?>
+						<li data-target="#carousel-home" data-slide-to="<?php // echo $i; ?>" <?php // if($i == 0) { echo "class='active'";} ?>>
+							<img src="http://placehold.it/500x500" />
+						</li>
+						<?php // $i++; endwhile; ?>
+					</ol> -->
+
+					<ol class="carousel-indicators group">
+						<?php $i = 0; while ( have_rows('new_gallery_item') ) : the_row(); ?>
+						<li class="<?php if($i == 0){echo 'active';} ?>" data-target="#carousel-home" data-slide-to="<?php echo $i; ?>">
+
+								<?php 
+									$thumbimage = get_sub_field('gallery_image');
+									if( !empty($thumbimage) ):
+
+									$size = 'thumbnail';
+									$thumb = $thumbimage['sizes'][ $size ];
+									$width = $thumbimage['sizes'][ $size . '-width' ];
+									$height = $thumbimage['sizes'][ $size . '-height' ];
+								?>
+
+									<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+
+								<?php
+									else:
+									$mainImage = get_sub_field('gallery_image');
+								?>
+
+									<img src="<?php echo $mainImage['url']; ?>" alt="<?php echo $mainImage['alt']; ?>" />
+
+							<?php endif; ?>
+						</li>
+						<?php $i++; endwhile; ?>
+					</ol>
 				</div><!--carousel-->
 			</div><!--home-gallery-->
 			<?php endif; ?>
