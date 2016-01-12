@@ -11,7 +11,7 @@
  */
 
 get_header(); ?>
-
+<?php while ( have_posts() ) : the_post(); ?>
 	<div class="full-section">
 		<div class="wrap">
 			<div class="individual-header">
@@ -105,14 +105,7 @@ get_header(); ?>
 			</div><!--home-gallery-->
 			<?php endif; ?>
 			<div class="individual-content">
-				<h2><?php the_title(); ?></h2>
-				<p>
-					<?php while ( have_posts() ) : the_post(); ?>
-
-						<?php the_content(); ?>
-
-					<?php endwhile; // end of the loop. ?>
-				</p>
+				<?php the_content(); ?>
 			</div>
 			<div class="gallery-navigation mobile">
 				<?php
@@ -131,5 +124,5 @@ get_header(); ?>
 			</div>
 		</div><!--wrap-->
 	</div><!-- #primary -->
-
+<?php endwhile; // end of the loop. ?>
 <?php get_footer(); ?>
